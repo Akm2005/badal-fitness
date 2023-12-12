@@ -24,14 +24,6 @@
         button {
             cursor: pointer;
         }
-
-        .odd-row {
-            background-color: #fff;
-        }
-
-        .even-row {
-            background-color: #f2f2f2;
-        }
     </style>
 </head>
 <body>
@@ -83,11 +75,10 @@
                 <td>${item.email}</td>
                 <td>${item.phoneNumber}</td>
                 <td>
-                    <button onclick="updateData('${item.id}')">&#9998; Update</button>
                     <button onclick="deleteData('${item.id}')">&#128465; Delete</button>
                 </td>
             `;
-            row.classList.add(index % 2 === 0 ? 'even-row' : 'odd-row');
+            row.style.backgroundColor = index % 2 === 0 ? '#fff' : '#f2f2f2'; // Alternating row colors
             tableBody.appendChild(row);
         });
     }
@@ -108,28 +99,9 @@
         }
     }
 
-    function updateData(id) {
-        // Implement the update logic here
-        const newName = prompt('Enter the new name:');
-        if (newName !== null) {
-            fetch(`https://655500aa63cafc694fe75243.mockapi.io/crud-youtube/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name: newName }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    fetchData();
-                } else {
-                    console.error('Failed to update data:', response.statusText);
-                }
-            })
-            .catch(error => console.error('Error updating data:', error));
-        }
-    }
+   
 </script>
+
 
 </body>
 </html>
