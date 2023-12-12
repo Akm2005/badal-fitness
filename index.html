@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>badal fitness</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Add these styles to your existing CSS file */
+
+#main-heading {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+  animation: fadeInUp 1.5s ease-in-out; /* Add a fade-in animation */
+}
+
+/* Define the fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.container {
+            max-width: 600px;
+            margin: 130px auto; /* Added margin to the top */
+            background-color: #000; /* Black background color */
+            color: #fff; /* White text color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="right">
+      <a href="tel:7052721331" class="btn">Call Us Now</a>
+      <a href="mailto:12DEFENCE2005@GMAIL.COM" class="btn">Email Us</a> <!-- Added Email Us link -->
+  </div>
+    <header class="header">
+      <div class="left">
+        <img src="https://i.ibb.co/7pfBTnD/Screenshot-2023-12-11-235105.png" alt="" />
+        <div>Badal Fitness</div>
+      </div>
+      <span>
+        <div class="mid">
+          <ul class="navbar" style="display: flex; margin:3px;">
+            <li><a href="#" >Home</a></li>
+            <li><a href="ABOUTUS.HTML">About Us</a></li>
+            <li><a href="fitnesscalculator.html">Fee Calculator</a></li>
+            
+          </ul>
+        </div>
+      </span>
+
+      
+    </header>
+    <div class="container">
+      <h1 id="main-heading">Join the best gym of Mumbai now</h1>
+
+      <form action="noaction.php" onsubmit="return validateForm()">
+        <div class="form-group">
+          <input type="text" name="name" id="name" placeholder="Enter your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="number" name="age" id="age" placeholder="Enter your Age" required />
+        </div>
+        <div class="form-group">
+          <input type="text" name="gender" id="gender" placeholder="Enter your Gender" required />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="locality"
+            id="locality"
+            placeholder="Enter your Locality"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" id="email" placeholder="Enter your Email Id" required />
+        </div>
+        <div class="form-group">
+          <input
+            type="tel"
+            name="phoneNumber"
+            id="phoneNumber"
+            placeholder="Enter your Phone Number"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+
+      <!-- Include your script.js file -->
+      <script src="script.js"></script>
+
+      <script>
+        function validateForm() {
+          var name = document.getElementById("name").value;
+          var age = document.getElementById("age").value;
+          var gender = document.getElementById("gender").value;
+          var locality = document.getElementById("locality").value;
+          var email = document.getElementById("email").value;
+          var phoneNumber = document.getElementById("phoneNumber").value;
+
+          if (name === "" || age === "" || gender === "" || locality === "" || email === "" || phoneNumber === "") {
+            alert("Please fill in all required fields.");
+            return false;
+          }
+          return true;
+        }
+      </script>
+    </div>
+  </body>
+</html>

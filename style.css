@@ -1,0 +1,154 @@
+body {
+  font-family: "Baloo Bhai", cursive;
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  background: url("https://png.pngtree.com/background/20230614/original/pngtree-black-and-white-gym-room-with-a-row-of-equipment-picture-image_3485114.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+.left {
+  display: inline-block;
+
+  position: absolute;
+  left: 60px;
+  top: 20px;
+  z-index: 1;
+}
+
+.left img {
+  width: 136px;
+  border-radius: 50%;
+}
+
+.left div {
+  line-height: 19px;
+  font-size: 26px;
+  text-align: center;
+}
+
+.mid {
+  display: block;
+  width: 46%;
+  margin: 29px auto;
+}
+
+.right {
+  position: absolute;
+  right: 34px;
+  top: 43px;
+  display: inline-block;
+}
+
+
+.navbar {
+  display: inline-block;
+  background-color: auto;
+}
+
+.navbar li {
+  display: inline-block;
+  font-size: 25px;
+}
+
+.navbar li a {
+  color: white;
+  text-decoration: none;
+  padding: 34px 23px;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+  text-decoration: underline;
+  color: grey;
+}
+
+.btn {
+  font-family: "Baloo Bhai", cursive;
+  margin: 0px 9px;
+  background-color: black;
+  color: white;
+  padding: 4px 14px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(31, 30, 30);
+}
+
+
+
+.form-group input {
+  font-family: "Baloo Bhai", cursive;
+  text-align: center;
+  display: block;
+  width: 508px;
+  padding: 1px;
+  border: 2px solid black;
+  margin: 12px auto;
+  font-size: 25px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container button {
+  display: block;
+  width: 74%;
+  margin: 20px auto;
+}
+
+/* Media query for screens with a maximum width of 600px (typical for phones) */
+@media screen and (max-width: 500px) {
+body{
+  width: 100%;
+  height: 100%;
+}
+  .left {
+    position: static;
+    text-align: center;
+  }
+
+  .left img {
+    margin: 10px auto;
+  }
+
+  .right  {
+    position: absolute;
+    text-align: center;
+    /* margin-top: 20px; */
+    top: 20%;
+    right: -230px; /* Adjust the distance from the right edge as needed */
+    display: inline-block;
+   
+    
+  }
+
+  .navbar {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar li {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    margin: 10px;
+    width: 184%;
+  }
+
+  .form-group input {
+    width: 80%;
+  }
+
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Calculator | Badal Fitness</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add any additional styles as needed */
+        .container {
+            max-width: 600px;
+            margin: 130px auto; /* Adjusted margin to the top */
+            background-color: #000; /* Black background color */
+            color: #fff; /* White text color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="right">
+        <a href="tel:7052721331" class="btn">Call Us Now</a>
+        <a href="mailto:12DEFENCE2005@GMAIL.COM" class="btn">Email Us</a> <!-- Added Email Us link -->
+    </div>
+    <header class="header">
+        <div class="left">
+            <img src="https://i.ibb.co/7pfBTnD/Screenshot-2023-12-11-235105.png" alt="" />
+            <div>Badal Fitness</div>
+        </div>
+        <span>
+            <div class="mid">
+                <ul class="navbar" style="display: flex; margin:3px;">
+                    <li><a href="INDEX.HTML">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="fitnesscalculator.html">Fee Calculator</a></li>
+                </ul>
+            </div>
+        </span>
+        <div class="right">
+            <a href="tel:7052721331" class="btn">Call Us Now</a>
+            <a href="mailto:12DEFENCE2005@GMAIL.COM" class="btn">Email Us</a> <!-- Added Email Us link -->
+        </div>
+    </header>
+    <div class="container">
+        <h1>Fee Calculator</h1>
+        <form id="feeCalculatorForm">
+            <div class="form-group">
+                <label for="membershipType">Select Membership Type:</label>
+                <select id="membershipType" name="membershipType">
+                    <option value="basic">Basic</option>
+                    <option value="standard">Standard</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="membershipDuration">Select Membership Duration (in months):</label>
+                <input type="number" id="membershipDuration" name="membershipDuration" min="1" required>
+            </div>
+            <button type="button" class="btn" onclick="calculateFee()">Calculate Fee</button>
+        </form>
+        <div id="result" style="margin-top: 20px;"></div>
+
+        <script>
+            function calculateFee() {
+                var membershipType = document.getElementById("membershipType").value;
+                var membershipDuration = parseInt(document.getElementById("membershipDuration").value);
+
+                var feePerMonth = 0;
+
+                // Set the fee per month based on the selected membership type
+                switch (membershipType) {
+                    case "basic":
+                        feePerMonth = 500;
+                        break;
+                    case "standard":
+                        feePerMonth = 1000;
+                        break;
+                    case "premium":
+                        feePerMonth = 1500;
+                        break;
+                    default:
+                        break;
+                }
+
+                var discountMonths1 = 6; // Number of months to qualify for a 1-month discount
+                var discountMonths2 = 12; // Number of months to qualify for a 2-month discount
+
+                var fee = feePerMonth * membershipDuration; // Default fee calculation
+
+                // Apply discount based on the selected membership duration
+                if (membershipDuration >= discountMonths1 && membershipDuration < discountMonths2) {
+                    fee = fee - feePerMonth; // 1-month discount for 6 months or more
+                } else if (membershipDuration >= discountMonths2) {
+                    fee = fee - (2 * feePerMonth); // 2-month discount for 12 months or more
+                }
+
+                // Display the result
+                document.getElementById("result").innerHTML = "Total Fee: $" + fee.toFixed(2);
+            }
+        </script>
+    </div>
+</body>
+</html>
