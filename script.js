@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
         if (response.ok) {
           console.log('Data successfully saved!');
-          alert('your requast submitted successfully!');
+          alert('your request submitted successfully!');
           // Add any additional logic or UI updates here
         } else {
           console.error('Failed to save data:', response.statusText);
