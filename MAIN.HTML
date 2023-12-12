@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>CRUD Operations</h2>
+
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Locality</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchData();
+    });
+
+    function fetchData() {
+        fetch('https://655500aa63cafc694fe75243.mockapi.io/crud-youtube')
+            .then(response => response.json())
+            .then(data => {
+                displayData(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function displayData(data) {
+        const tableBody = document.querySelector('#data-table tbody');
+        tableBody.innerHTML = '';
+
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.id}</td>
+                <td>${item.name}</td>
+                <td>${item.age}</td>
+                <td>${item.gender}</td>
+                <td>${item.locality}</td>
+                <td>${item.email}</td>
+                <td>${item.phoneNumber}</td>
+                <td>
+                    <button onclick="updateData('${item.id}')">&#9998; Update</button>
+                    <button onclick="deleteData('${item.id}')">&#128465; Delete</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function deleteData(id) {
+        if (confirm('Are you sure you want to delete this record?')) {
+            fetch(`https://655500aa63cafc694fe75243.mockapi.io/crud-youtube/${id}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    fetchData();
+                } else {
+                    console.error('Failed to delete data:', response.statusText);
+                }
+            })
+            .catch(error => console.error('Error deleting data:', error));
+        }
+    }
+
+    function updateData(id) {
+        // You can implement the update logic here
+        console.log('Update data with ID:', id);
+    }
+</script>
+
+</body>
+</html>
