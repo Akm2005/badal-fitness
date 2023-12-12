@@ -24,6 +24,14 @@
         button {
             cursor: pointer;
         }
+
+        .odd-row {
+            background-color: #fff;
+        }
+
+        .even-row {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -64,7 +72,7 @@
         const tableBody = document.querySelector('#data-table tbody');
         tableBody.innerHTML = '';
 
-        data.forEach(item => {
+        data.forEach((item, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${item.id}</td>
@@ -79,6 +87,7 @@
                     <button onclick="deleteData('${item.id}')">&#128465; Delete</button>
                 </td>
             `;
+            row.classList.add(index % 2 === 0 ? 'even-row' : 'odd-row');
             tableBody.appendChild(row);
         });
     }
@@ -100,8 +109,25 @@
     }
 
     function updateData(id) {
-        // You can implement the update logic here
-        console.log('Update data with ID:', id);
+        // Implement the update logic here
+        const newName = prompt('Enter the new name:');
+        if (newName !== null) {
+            fetch(`https://655500aa63cafc694fe75243.mockapi.io/crud-youtube/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: newName }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    fetchData();
+                } else {
+                    console.error('Failed to update data:', response.statusText);
+                }
+            })
+            .catch(error => console.error('Error updating data:', error));
+        }
     }
 </script>
 
